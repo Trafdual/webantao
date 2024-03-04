@@ -16,7 +16,7 @@
     <style>
         #thanhmenu {
             width: auto;
-            background-color: rgb(250, 145, 54);
+            background-color: rgb(248, 26, 14);
             text-align: center;
             height: 60px;
         }
@@ -51,6 +51,31 @@
         }
 
         #suachua {
+            padding: 20px;
+            width: auto;
+            background-color: #fffbfb;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #iphone {
+            padding: 20px;
+            width: auto;
+            background-color: #fffbfb;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #phukien {
+            padding: 20px;
+            width: auto;
+            background-color: #fffbfb;
+            height: auto;
+            border-radius: 10px;
+
+        }
+
+        #lienhe {
             padding: 20px;
             width: auto;
             background-color: #fffbfb;
@@ -96,7 +121,7 @@
             position: relative;
             width: 270px;
             height: 270px;
-            border: rgb(250, 145, 54) solid 1px;
+            border: rgb(252, 20, 20) solid 1px;
             border-radius: 10px;
             margin-left: 40px;
         }
@@ -105,9 +130,23 @@
             position: relative;
             width: 270px;
             height: 270px;
-            border: rgb(250, 145, 54) solid 1px;
+            border: rgb(252, 20, 20) solid 1px;
             border-radius: 10px;
             margin-left: 10px;
+        }
+
+        .cotlienhe {
+            margin-left: 1%;
+            width: 31%;
+            height: 50%;
+            border-radius: 10px;
+        }
+
+        .cotlienhe1 {
+            width: 30%;
+            height: 50%;
+            border-radius: 10px;
+            margin-left: 2%;
         }
 
         .cott {
@@ -124,14 +163,130 @@
         }
 
         .anhbanner {
-            width: 100px;
-            height: 300px;
+            width: 100%;
+            height: 350px;
+            
+        }
+
+        .tieude {
+            color: #fa0e0e;
+            font-size: 20px;
+            text-align: center;
+            width: 30%;
+            height: 7%;
+            border: rgb(252, 20, 20) solid 1px;
+            border-radius: 20px;
         }
 
         #banner {
             width: 95%;
             height: 200px;
-            margin-bottom: 100px;
+            margin-bottom: 170px;
+        }
+
+        #anhbanner2 {
+            width: 100%;
+            height: 80%;
+        }
+
+        #banner2 {
+            width: 95%;
+            height: 200px;
+            margin-bottom: 0, 01%;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            border: 1px solid #ccc;
+            z-index: 1;
+            top: 85%;
+            list-style: none;
+            width: 16.1%;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .menu-dropdown li {
+            border: #ccc solid 1px;
+            padding: 10px;
+        }
+
+        .menu-dropdown li a {
+            text-align: center;
+            height: 30%;
+            text-decoration: none;
+            /* Loại bỏ gạch chân mặc định của liên kết */
+            color: #595858;
+            /* Màu chữ cho các mục menu */
+            font-size: 15px;
+        }
+
+        #thanhmenu:hover+#menuDropdown {
+            display: block;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .carousel-indicators li {
+            background-color: #fff;
+            /* Màu nền của dấu chấm */
+            border: 1px solid #ccc;
+            /* Viền của dấu chấm */
+            width: 10px;
+            /* Độ rộng của dấu chấm */
+            height: 10px;
+            /* Độ cao của dấu chấm */
+            margin-right: 5px;
+            /* Khoảng cách giữa các dấu chấm */
+            cursor: pointer;
+            /* Chỉ định con trỏ khi di chuột qua dấu chấm */
+        }
+
+        .nut {
+            width: 7%;
+            margin-top: 10%;
+            border-radius: 100%;
+        }
+
+        .nut:hover {
+            background-color: #050505;
+        }
+
+        #daucham {
+            margin-top: 7%;
+        }
+
+        .carousel-indicators {
+            position: relative;
+            /* Thiết lập vị trí tuyệt đối */
+            bottom: 10%;
+            padding: 0;
+        }
+
+        .carousel-indicators li {
+            background-color: black;
+            /* Màu đen */
+        }
+
+        /* Thiết lập màu sắc cho dấu chấm khi trỏ vào */
+        .carousel-indicators li:hover {
+            background-color: white;
+            /* Màu trắng */
+        }
+
+        /* Thiết lập màu sắc cho dấu chấm tương ứng với ảnh đang được hiển thị */
+        .carousel-indicators li.active {
+            background-color: white;
+            /* Màu trắng */
+        }
+        .aphukien{
+            text-decoration: none;
+            font-weight: bold;
+            color: #050505;
         }
     </style>
 </head>
@@ -145,11 +300,22 @@
                     <i class="fas fa-bars"
                         style="width: auto; height:auto; margin-left: 10px; margin-top: 20px; color:#f4f4f4"></i>
                     <a style="font-size: 15px;color:#f4f4f4" id="navbar-brand" class="navbar-brand" href="#">Danh mục
-                        dịch vụ
-                    </a>
+                        dịch vụ</a>
                     <i class="fa-solid fa-chevron-down"
                         style="width: auto; height:auto; margin-left: 40px; margin-top: 20px; margin-right: 10px; color:#f4f4f4"></i>
                 </div>
+
+                <ul id="menuDropdown" class="menu-dropdown">
+                    <li>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <a href="#"> Sửa chữa điện thoại</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-headphones"></i>
+                        <a href="#"> Phụ kiện</a>
+                    </li>
+                </ul>
+
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -196,64 +362,153 @@
                             class="d-block w-100 anhbanner" alt="Ảnh 3">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+                <button class="carousel-control-prev nut" type="button" data-bs-target="#banner" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
+                <button class="carousel-control-next nut" type="button" data-bs-target="#banner" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-                <ol class="carousel-indicators">
+                <div class="carousel-indicators">
                     <li data-bs-target="#banner" data-bs-slide-to="0" class="active"></li>
                     <li data-bs-target="#banner" data-bs-slide-to="1"></li>
                     <li data-bs-target="#banner" data-bs-slide-to="2"></li>
-                </ol>
+                </div>
             </div>
-            <div id="gioithieu">
+            <div id="iphone">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <i class="fa-solid fa-square fa-xl"
-                            style="width: auto; height:auto;color: rgb(250, 145, 54);"></i>
+                            style="width: auto; height:auto;color: rgb(252, 20, 20);"></i>
                     </div>
                     <div class="col">
-                        <h5 style="color: rgb(250, 145, 54); margin-top: 20px;font-weight: bold;">GIỚI THIỆU VỀ PHÁT LỘC
-                            MOBILE</h5>
+                        <h5 style="color:rgb(252, 20, 20); margin-top: 20px;font-weight: bold;">SỬA CHỮA IPHONE</h5>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col" style="word-wrap: break-word;margin-top: 10px;">
-                        <p style="width: 600px;line-height: 1.8; font-size:17px">Khởi đầu từ một cửa hàng nhỏ được thành
-                            lập
-                            từ năm 2007, sau hơn 12 năm hoạt động, tính cho
-                            đến nay Phát Lộc Mobile đã phát triển trở thành một trong những trung tâm hàng đầu tại Hà
-                            Nội có hệ thống các cơ sở rộng lớn chuyên phân phối, bảo hành và sửa chữa điện thoại. Trong
-                            số các dịch vụ đa dạng tại đây, thay kính, ép kính điện thoại được đánh giá là một dịch vụ
-                            khá nổi bật và nhận được nhiều phản hồi tích cực từ phía khách hàng trong thời gian vừa qua.
-                            Với đội ngũ nhân viên lành nghề, giàu kinh nghiệm cùng với chuyên môn hóa kỹ thuật cao trong
-                            sửa chữa, đặc biệt lại có sự hỗ trợ của các trang thiết bị máy móc hiện đại được nhập khẩu
-                            trực tiếp và áp dụng công nghệ từ các nước phát triển, Phát Lộc Mobile hoàn toàn có đủ khả
-                            năng để giúp ”dế yêu” bạn nhanh chóng trở về hiện trạng như ban đầu.</p>
-                        <a id="timhieu" class="navbar-brand" href="#">Tìm hiểu thêm >
-                        </a>
-                    </div>
-                    <div class="col">
-                        <div class="img">
-                            <img src="https://phatlocmobile.vn/wp-content/uploads/2023/05/co-so-2-178-trung-kinh-4.jpg.webp"
-                                alt="">
+                <section id="mobile-products" class="product-store position-relative no-padding-top section">
+                    <div class="container sp">
+                        <div class="row">
+                            <div class="swiper product-swiper">
+                                <div class="swiper-wrapper list">
+                                    {{#each listSP}}
+                                    {{#if (isOdd @index)}}
+                                    <div class="swiper-slide">
+                                        <div class="product-card position-relative">
+                                            <div class="image-holder">
+                                                <img src="data:image/jpeg;base64, {{img}}" alt="product-item"
+                                                    class="img-fluid anh">
+                                            </div>
+                                            <div class="cart-concern position-absolute">
+                                                <div class="cart-button d-flex">
+                                                    <a href="/chitiet/{{_id}}" class="btn btn-medium btn-black">Xem chi
+                                                        tiết<svg class="cart-outline">
+                                                            <use xlink:href="#cart-outline"></use>
+                                                        </svg></a>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="card-detail d-flex justify-content-between align-items-baseline pt-3 thanhphan">
+                                                <h6>
+                                                    <a href="/chitiet/{{_id}}" class="name">{{name}}</a>
+                                                </h6>
+                                                <span class="item-price text-primary price text-wrap">{{price}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{/each}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="swiper-pagination position-absolute text-center"></div>
+                </section>
+            </div>
+            <div id="banner2">
+                <img id="anhbanner2"
+                    src="https://phatlocmobile.vn/wp-content/uploads/2023/05/trung-tam-sua-chua-dien-thoai-may-tinh-bang-apple-watch-uy-tin2-2048x331.jpg.webp"
+                    alt="">
+            </div>
+            <div id="phukien">
+                <section id="latest-blog" class="padding-large section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <i class="fa-solid fa-square fa-xl"
+                                        style="width: auto; height:auto;color: rgb(252, 20, 20);"></i>
+                                </div>
+                                <div class="col">
+                                    <h5 style="color:rgb(252, 20, 20); margin-top: 20px;font-weight: bold;">SỬA CHỮA
+                                        IPHONE</h5>
+                                </div>
+                                <div class="post-grid d-flex flex-wrap justify-content-between">
+                                    <div class="col-lg-4 col-sm-12">
+                                        <div class="card border-none me-3">
+                                            <div class="card-image">
+                                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi84nG57QxSghcEBZCoDtKkj5TxmJco0s5pUe0My_2jDCzGZDhe2UcUbCWhFpFvm9cUlNBr6nn2GCvh0vv_FX2ecnXLwjlBQ-1X8CQ7rYn6qUVq_fSOzNnym5sDL4no-3S_vBokpavR2MPQMxhkTAkji17zVtB2altWxC8FjDiC-EKLxKCdsc1cCwII9wFk/s320/post-item1.jpg"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-uppercase">
+                                            <div class="card-meta text-muted">
+                                                <span class="meta-date">Hàng chính hãng</span>
+                                                <span class="meta-category">- An Táo</span>
+                                            </div>
+                                            <h5 class="card-title">
+                                                <a class="aphukien" href="#">Củ sạc nhanh Apple 20W Type-C</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <div class="card border-none me-3">
+                                            <div class="card-image">
+                                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmWt4eA-qbm56v6XLIhgKb_gPeWoxnnPmcduuaSfpZO0rQJadQ2YVkpk0WvJehbUBy5rJuwx4ZSBOrk9RypOtnCNh4QwyHj8zlkCpmfNgsW2UKjixCcTEMuZ8YNlxk9HQqw6NDUDqrBcvDC8YRx-jSAecAIfLHznjvXbHbcMD1XgfmL6y-bHI7GkEpgFMw/s320/post-item2.jpg"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-uppercase">
+                                            <div class="card-meta text-muted">
+                                                <span class="meta-date">Hàng chính hãng</span>
+                                                <span class="meta-category">- An Táo</span>
+                                            </div>
+                                            <h5 class="card-title">
+                                                <a class="aphukien" href="#">Dây cáp sạc nhanh Apple</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12">
+                                        <div class="card border-none me-3">
+                                            <div class="card-image">
+                                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6IOk2deLpIzp1Zp2kY_8tzGcDR_B0eNUdXjWoZbGzrvVDeUmBb3N8GGbcIy-6zNMr8PTXyMo2uIsmGFSEiHamr_ea4sOd7UAHsaan-zD4VEEesV4Uz4AYFWUgAegAG0LkucfUidB_tFQcszyvf7hQUKRvalLqxDNGvSHb2W0715A1N31rGH4f-pKnJZCk/s320/post-item3.jpg"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-uppercase">
+                                            <div class="card-meta text-muted">
+                                                <span class="meta-date">Hàng chính hãng</span>
+                                                <span class="meta-category">- An Táo</span>
+                                            </div>
+                                            <h5 class="card-title">
+                                                <a class="aphukien" href="#">Ốp lưng dẻo thời trang, cường lực chắc chắn</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
             </div>
             <div id="suachua">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <i class="fa-solid fa-square fa-xl"
-                            style="width: auto; height:auto;color: rgb(250, 145, 54);"></i>
+                            style="width: auto; height:auto;color: rgb(252, 20, 20);"></i>
                     </div>
                     <div class="col">
-                        <h5 style="color: rgb(250, 145, 54); margin-top: 20px;font-weight: bold;">GIỚI THIỆU VỀ PHÁT LỘC
-                            MOBILE</h5>
+                        <h5 style="color:rgb(252, 20, 20); margin-top: 20px;font-weight: bold;">AN TÁO SỬA CHỮA HÀ NỘI –
+                            SỬA CHỮA ĐIỆN THOẠI SIÊU TỐC – UY TÍN</h5>
                     </div>
                 </div>
                 <div class="row g-4 cott">
@@ -305,10 +560,51 @@
                 </div>
 
             </div>
+            <div id="lienhe" class="container">
+                <div class="row">
+                    <div class="cotlienhe col-md-4">
+                        <p class="tieude">Giới Thiệu</p>
+                        <h6 style="font-weight: bold;">AN TÁO SỬA CHỮA HÀ NỘI</h6>
+                        <p>Cửa hàng bán lẻ điện thoại di động, smartphone, iPad, laptop, phụ kiện chính hãng, giá tốt
+                            nhất. Kèm theo nhiều khuyến mãi hấp dẫn.</p>
+                        <h6 style="font-weight: bold;">HOTLINE:</h6>
+                        <p>Địa chỉ trụ sở chính/ chi nhánh : 18 Tây Sơn - Quận Đống Đa - Hà Nội</p>
+                    </div>
+                    <div class="cotlienhe1 col-md-4">
+                        <p class="tieude">Liên Hệ</p>
+                        <h5 style="font-weight: bold;">Tư vấn bán hàng và hỗ trợ trả góp (8h00 - 22h00)</h5>
+                        <div class="wrapper" style="display: flex; align-items: center;">
+                            <h5 class="hotline" style="font-weight: bold;">Hotline: </h5>
+                            <h5 style="color: #fa0e0e; font-weight:bold;">000000</h5>
+                        </div>
+                        <h5 style="font-weight: bold;">-----------------------------------------------</h5>
+                        <h5 style="font-weight: bold;">Hỗ trợ kỹ thuật</h5>
+                        <h5 style="font-weight: bold;">(9h30-12h30; 14h-18h30)</h5>
+                        <div class="wrapper" style="display: flex; align-items: center;">
+                            <h5 class="hotline" style="font-weight: bold;">Hotline: </h5>
+                            <h5 style="color: #fa0e0e; font-weight:bold;">000000</h5>
+                        </div>
+                        <h5 style="font-weight: bold;">-----------------------------------------------</h5>
+                    </div>
+                    <div class="cotlienhe1 col-md-4">
+                        <p class="tieude">Facebook</p>
+                        <iframe
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100086450281606%26mibextid%3DuzlsIk&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                            width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                            allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
+    <script>
+        // Định nghĩa helper function isOdd
+        Handlebars.registerHelper('isOdd', function (index) {
+            return index % 2 !== 0;
+        });
 
+    </script>
 </body>
 
 </html>
