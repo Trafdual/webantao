@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Mobile</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        #thanhmenu {
+            width: auto;
+            background-color: rgb(250, 145, 54);
+            text-align: center;
+            height: 60px;
+        }
+
+        #navbar-brand {
+            margin-left: 5px;
+        }
+
+        #giohang {
+            width: auto;
+            margin-right: 20px;
+            text-align: center;
+
+
+        }
+
+        #body {
+            margin-top: 30px;
+            width: auto;
+            height: auto;
+            margin-left: 150px;
+            margin-right: 50px;
+
+        }
+
+        #gioithieu {
+            padding: 20px;
+            width: auto;
+            background-color: #fffbfb;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #suachua {
+            padding: 20px;
+            width: auto;
+            background-color: #fffbfb;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #timhieu {
+            font-size: 17px;
+            color: #267502;
+            text-decoration: none;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        #timhieu:hover {
+            color: #050505;
+            /* Thay đổi màu chữ khi hover */
+        }
+
+        #timhieu::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #267502;
+            transition: width 0.3s ease, transform 0.3s ease;
+            /* Thêm transition cho thuộc tính transform */
+            transform-origin: center;
+            /* Thiết lập điểm bắt đầu cho transform */
+        }
+
+        #timhieu:hover::after {
+            width: 100%;
+            transform: scaleX(1);
+            /* Mở rộng chiều rộng của gạch chân */
+            background-color: #050505;
+        }
+
+        .c {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            border: rgb(250, 145, 54) solid 1px;
+            border-radius: 10px;
+            margin-left: 40px;
+        }
+
+        .c1 {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            border: rgb(250, 145, 54) solid 1px;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        .cott {
+            margin-top: 40px;
+        }
+
+        .imgsuachua {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: -50px;
+            left: 80px;
+            z-index: 1;
+        }
+
+        .anhbanner {
+            width: 100px;
+            height: 300px;
+        }
+
+        #banner {
+            width: 95%;
+            height: 200px;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body style="font-family: Arial, sans-serif;margin: 0;background-color: #ffffff;">
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <div id="thanhmenu">
+                    <i class="fas fa-bars"
+                        style="width: auto; height:auto; margin-left: 10px; margin-top: 20px; color:#f4f4f4"></i>
+                    <a style="font-size: 15px;color:#f4f4f4" id="navbar-brand" class="navbar-brand" href="#">Danh mục
+                        dịch vụ
+                    </a>
+                    <i class="fa-solid fa-chevron-down"
+                        style="width: auto; height:auto; margin-left: 40px; margin-top: 20px; margin-right: 10px; color:#f4f4f4"></i>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tin tức & khuyến mãi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Quy định bảo hành</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Liên hệ</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div id="giohang">
+                    <p style="display: inline;">giỏ hàng</p>
+                    <p style="display: inline;">/</p>
+                    <p style="display: inline;">0đ</p>
+                    <i class="fa-solid fa-cart-shopping" style="width: auto; height:auto;"></i>
+                </div>
+
+            </div>
+        </nav>
+        <div id="body">
+            <div id="banner" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://phatlocmobile.vn/wp-content/uploads/2023/05/thay-man-hinh-dien-thoai-gia-re-phat-loc-mobile.jpg.webp"
+                            class="d-block w-100 anhbanner" alt="Ảnh 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://phatlocmobile.vn/wp-content/uploads/2023/05/thay-kinh-dien-thoai-iphone-phat-loc-mobile.jpg.webp"
+                            class="d-block w-100 anhbanner" alt="Ảnh 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://phatlocmobile.vn/wp-content/uploads/2023/05/thay-pin-dien-thoai-iphone-phat-loc-mobile.jpg.webp"
+                            class="d-block w-100 anhbanner" alt="Ảnh 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#banner" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#banner" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#banner" data-bs-slide-to="2"></li>
+                </ol>
+            </div>
+            <div id="gioithieu">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <i class="fa-solid fa-square fa-xl"
+                            style="width: auto; height:auto;color: rgb(250, 145, 54);"></i>
+                    </div>
+                    <div class="col">
+                        <h5 style="color: rgb(250, 145, 54); margin-top: 20px;font-weight: bold;">GIỚI THIỆU VỀ PHÁT LỘC
+                            MOBILE</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="word-wrap: break-word;margin-top: 10px;">
+                        <p style="width: 600px;line-height: 1.8; font-size:17px">Khởi đầu từ một cửa hàng nhỏ được thành
+                            lập
+                            từ năm 2007, sau hơn 12 năm hoạt động, tính cho
+                            đến nay Phát Lộc Mobile đã phát triển trở thành một trong những trung tâm hàng đầu tại Hà
+                            Nội có hệ thống các cơ sở rộng lớn chuyên phân phối, bảo hành và sửa chữa điện thoại. Trong
+                            số các dịch vụ đa dạng tại đây, thay kính, ép kính điện thoại được đánh giá là một dịch vụ
+                            khá nổi bật và nhận được nhiều phản hồi tích cực từ phía khách hàng trong thời gian vừa qua.
+                            Với đội ngũ nhân viên lành nghề, giàu kinh nghiệm cùng với chuyên môn hóa kỹ thuật cao trong
+                            sửa chữa, đặc biệt lại có sự hỗ trợ của các trang thiết bị máy móc hiện đại được nhập khẩu
+                            trực tiếp và áp dụng công nghệ từ các nước phát triển, Phát Lộc Mobile hoàn toàn có đủ khả
+                            năng để giúp ”dế yêu” bạn nhanh chóng trở về hiện trạng như ban đầu.</p>
+                        <a id="timhieu" class="navbar-brand" href="#">Tìm hiểu thêm >
+                        </a>
+                    </div>
+                    <div class="col">
+                        <div class="img">
+                            <img src="https://phatlocmobile.vn/wp-content/uploads/2023/05/co-so-2-178-trung-kinh-4.jpg.webp"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="suachua">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <i class="fa-solid fa-square fa-xl"
+                            style="width: auto; height:auto;color: rgb(250, 145, 54);"></i>
+                    </div>
+                    <div class="col">
+                        <h5 style="color: rgb(250, 145, 54); margin-top: 20px;font-weight: bold;">GIỚI THIỆU VỀ PHÁT LỘC
+                            MOBILE</h5>
+                    </div>
+                </div>
+                <div class="row g-4 cott">
+                    <div class="col-md-3 c1">
+                        <img class="imgsuachua"
+                            src="https://phatlocmobile.vn/wp-content/uploads/2023/05/icon-phat-loc-mobile-01.jpg.webp"
+                            alt="">
+                        <div style="text-align: center; margin-left:10px; margin-top:80px; padding:10px">
+
+                            <h5 style="font-weight: bold;">Sửa chữa Siêu Tốc</h5>
+                            <p style="text-align: center; font-size:17px">Với đội Kĩ thuật viên trên 10 năm kinh nghiệm.
+                                Phát Lộc Mobile cam kết sửa chữa lấy ngay trong ngày với hơn 80% dịch vụ.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 c">
+                        <img class="imgsuachua"
+                            src="https://phatlocmobile.vn/wp-content/uploads/2023/05/icon-phat-loc-mobile-02.jpg.webp"
+                            alt="">
+                        <div style="text-align: center; margin-left:10px; margin-top:80px; padding:10px">
+
+                            <h5 style="font-weight: bold;">Bảo hành dài hạn</h5>
+                            <p style="text-align: center; font-size:17px">Chế Độ Bảo Hành Lên Đến 12 Tháng. Lỗi linh
+                                kiện 1 đổi 1.
+                                Hoàn tiền 100% nếu phát hiện kém chất lượng.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 c">
+                        <img class="imgsuachua"
+                            src="https://phatlocmobile.vn/wp-content/uploads/2023/05/icon-phat-loc-mobile-03.jpg.webp"
+                            alt="">
+                        <div style="text-align: center; margin-left:10px; margin-top:80px; padding:10px">
+
+                            <h5 style="font-weight: bold;">Tiết kiệm</h5>
+                            <p style="text-align: center; font-size:17px">Phát Lộc Mobile là nhà buôn Linh Kiện lớn nhất
+                                Miền Bắc. Chúng tôi cam kết Giá Tốt số 1 cho sản phẩm chất lượng.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 c">
+                        <img class="imgsuachua"
+                            src="https://phatlocmobile.vn/wp-content/uploads/2023/05/icon-phat-loc-mobile-04.jpg.webp"
+                            alt="">
+                        <div style="text-align: center; margin-left:10px; margin-top:80px; padding:10px">
+
+                            <h5 style="font-weight: bold;">Chất lượng</h5>
+                            <p style="text-align: center; font-size:17px">Linh kiện tại Phát Lộc Mobile đều được nhập
+                                chính hãng 100%. Chúng tôi nói không với hàng giả , hàng kém chất lượng.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
