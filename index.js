@@ -11,7 +11,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const web=require('./router/web');
-
+const sanphamroute=require('./router/SanPhamRouter');
 var app = express();
 
 app.engine(".hbs", hbs.engine({
@@ -52,6 +52,7 @@ app.use(session({
 }));
 app.use(cors());
 app.use('/',web);
+app.use('/', sanphamroute);
 
 app.listen(8080, () => {
     try {
