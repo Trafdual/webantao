@@ -14,18 +14,12 @@ const web=require('./router/web');
 const sanphamroute=require('./router/SanPhamRouter');
 var app = express();
 
-app.engine(".hbs", hbs.engine({
-  extname: "hbs",
-  defaultLayout: false,
-  layoutsDir: "views/layouts/",
-  handlebars: allowInsecurePrototypeAccess(Handelbars)
-}));
-
-app.set("view engine", ".hbs");
-app.set("views", path.join(__dirname, "views"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
-
-const uri = "mongodb+srv://totnghiepduan2023:qs49jTtYwyQcsZ6i@cluster0.tzx1qqh.mongodb.net/DuanTotNghiep?retryWrites=true&w=majority";
+const uri = "mongodb+srv://ducbinhnguyennd:ducbinhnguyennd@cluster0.geuahvt.mongodb.net/AntaoShop?retryWrites=true&w=majority";
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -39,8 +33,7 @@ const mongoStoreOptions = {
 };
 
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(session({
   secret: 'mysecretkey',
   resave: false,

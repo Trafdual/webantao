@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const ChitietSp = require("../model/chitietSpModel");
-const TenSP = require("../model/tenSpModel");
+const LoaiSP = require("../model/tenSpModel");
+const multer = require('multer')
 
+const storage = multer.memoryStorage();
 
-router.post('/postsp', async (req, res) => {
+const upload = multer({ storage: storage });
+
+router.post('/postloaisp', async (req, res) => {
     try {
         const { name } = req.body
-        const tensp = new TenSP({ name });
+        const tensp = new LoaiSP({ name });
         await tensp.save();
         res.json(tensp);
     } catch (error) {
@@ -59,15 +63,18 @@ router.post('/deletesp/:id', async (req, res) => {
     }
 })
 
-router.post('/postchitietsp/:id', async (req, res) => {
+router.post('/postchitietsp/:id',upload.single('image'), async (req, res) => {
     try {
         const id = req.params.id;
-        const { content, price } = req.body;
-        const chitietsp = new ChitietSp({content,price, id });
-        const tensp = await TenSP.findById(id);
+        const { name,content, price } = req.body;
+        const image = req.file.buffer.toString('base64');
+        const chitietsp = new ChitietSp({image,name,content,price });
+        const tensp = await LoaiSP.findById(id);
         if (!tensp) {
             res.status(403).json({ message: 'khong tim thay tensp' })
         }
+        chitietsp.idloaisp=id;
+        chitietsp.loaisp=tensp.name;
         tensp.chitietsp.push(chitietsp._id);
         await chitietsp.save();
         await tensp.save();
@@ -86,7 +93,7 @@ router.get('/getchitietsp/:id', async (req, res) => {
             return res.status(404).json({ message: 'Không tìm thấy chi tiết sản phẩm' });
         }
 
-        const tensp = await TenSP.findOne({ chitietsp: chitietsp._id });
+        const tensp = await LoaiSP.findOne({ chitietsp: chitietsp._id });
         if (!tensp) {
             return res.status(404).json({ message: 'Không tìm thấy sản phẩm' });
         }
@@ -98,7 +105,7 @@ router.get('/getchitietsp/:id', async (req, res) => {
             price: chitietsp.price
         };
 
-        res.json(chitietspJson);
+        res.render('chitietsp',chitietspJson)
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: `Đã xảy ra lỗi: ${error}` });

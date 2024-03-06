@@ -3,7 +3,12 @@
 
 <head>
     <title>Web Mobile</title>
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,15 +17,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <style>
-        .navbar{
+        .navbar {
             width: 100%;
             position: fixed;
             z-index: 1;
             top: 0;
         }
+
         #thanhmenu {
             width: auto;
             background-color: rgb(248, 26, 14);
@@ -71,6 +77,7 @@
             background-color: #fffbfb;
             height: auto;
             border-radius: 10px;
+            z-index: 0;
         }
 
         #phukien {
@@ -296,11 +303,12 @@
 
         #facezalo {
             position: fixed;
-            top: 70%;
+            top: 50%;
             left: 2%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
         }
 
         .image-wrapper {
@@ -399,6 +407,60 @@
             animation: expand 2s infinite;
             display: inline-block;
         }
+
+        .anhdt {
+            position: relative;
+            text-align: center;
+            margin-top: 20%;
+            background-color: rgb(9, 247, 13);
+            width: 70px;
+            /* Đảm bảo chiều rộng và chiều cao bằng nhau */
+            height: 70px;
+            border-radius: 50%;
+            /* Biến hình thành hình tròn */
+            animation: expand 2s infinite;
+            display: inline-block;
+        }
+
+        .anh {
+            width: 260px;
+            height: auto;
+        }
+
+        .image-holder {
+            width: auto;
+            height: auto;
+        }
+
+        .thanhphan {
+            width: 100%;
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            width: calc(25% - 15px);
+            /* Điều chỉnh kích thước của mỗi ô */
+            margin-bottom: 30px;
+            /* Điều chỉnh khoảng cách giữa các ô */
+        }
+
+        #buttonmua {
+            width: auto;
+            display: none;
+            position: absolute;
+            bottom: -80px;
+            transition: bottom 0.3s ease;
+        }
+
+        #listspchung:hover #buttonmua {
+            bottom: 40px;
+            /* Hiển thị nút khi hover */
+        }
     </style>
 </head>
 
@@ -459,16 +521,18 @@
         </nav>
         <div id="facezalo">
             <div class="anhfz">
-                {{!-- <div class="vongtron"></div> --}}
                 <img class="anhfacezalo" id="face"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
                     alt="">
             </div>
 
             <div class="anhfz">
-                {{!-- <div class="vongtron"></div> --}}
                 <img id="zalo" class="anhfacezalo"
                     src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-App-Rec.png" alt="">
+            </div>
+
+            <div class="anhdt">
+                <img class="anhfacezalo" src="https://freeiconshop.com/wp-content/uploads/edd/phone-flat.png" alt="" onclick="makeCall()">
             </div>
 
         </div>
@@ -512,44 +576,44 @@
                         <h5 style="color:rgb(252, 20, 20); margin-top: 20px;font-weight: bold;">SỬA CHỮA IPHONE</h5>
                     </div>
                 </div>
-                <section id="mobile-products" class="product-store position-relative no-padding-top section">
+                <div id="mobile-products" class="product-store position-relative no-padding-top section">
                     <div class="container sp">
                         <div class="row">
                             <div class="swiper product-swiper">
                                 <div class="swiper-wrapper list">
-                                    {{#each listSP}}
-                                    {{#if (isOdd @index)}}
-                                    <div class="swiper-slide">
-                                        <div class="product-card position-relative">
-                                            <div class="image-holder">
-                                                <img src="data:image/jpeg;base64, {{img}}" alt="product-item"
-                                                    class="img-fluid anh">
-                                            </div>
-                                            <div class="cart-concern position-absolute">
-                                                <div class="cart-button d-flex">
-                                                    <a href="/chitiet/{{_id}}" class="btn btn-medium btn-black">Xem chi
-                                                        tiết<svg class="cart-outline">
-                                                            <use xlink:href="#cart-outline"></use>
-                                                        </svg></a>
+                                    <% listSP.forEach((row, index)=> { %>
+                                        <div style="padding: 10px;" id="listspchung">
+                                            <img src="data:image/jpeg;base64, <%= row.image %>" class="anh" alt="">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="name">
+                                                        <%= row.name %>
+                                                    </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="price">
+                                                        <%= row.price %>
+                                                    </h5>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="card-detail d-flex justify-content-between align-items-baseline pt-3 thanhphan">
-                                                <h6>
-                                                    <a href="/chitiet/{{_id}}" class="name">{{name}}</a>
-                                                </h6>
-                                                <span class="item-price text-primary price text-wrap">{{price}}</span>
+                                            <div id="buttonmua" style="padding: 10px;"
+                                                class="row d-flex justify-content-between">
+                                                <form class="col" action="/getchitietsp/<%= row._id %>" method="get">
+                                                    <button
+                                                        style="background-color: #fa0e0e; width: 120px; height: 50px; color: #fffbfb; border: none;"
+                                                        type="submit">CHI TIẾT</button>
+                                                </form>
+                                                <button
+                                                    style="background-color: #fa0e0e; width: 120px; height: 50px; color: #fffbfb; border: none;"
+                                                    class="col">MUA NGAY</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    {{/if}}
-                                    {{/each}}
+                                        <% }) %>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-pagination position-absolute text-center"></div>
-                </section>
+                </div>
             </div>
             <div id="banner2">
                 <img id="anhbanner2"
@@ -726,6 +790,13 @@
         </div>
     </div>
     <script>
+        $(document).ready(function () {
+            $("#listspchung").hover(function () {
+                $("#buttonmua").slideDown();
+            }, function () {
+                $("#buttonmua").slideUp();
+            });
+        });
 
         document.addEventListener("DOMContentLoaded", function () {
             var menuDropdown = document.getElementById("menuDropdown");
@@ -755,10 +826,29 @@
             });
 
         });
-        // Định nghĩa helper function isOdd
-        Handlebars.registerHelper('isOdd', function (index) {
-            return index % 2 !== 0;
-        });
+
+        function makeCall() {
+            // Thay đổi số điện thoại dưới đây bằng số điện thoại thực tế
+            var phoneNumber = "0987654321";
+
+            // Kiểm tra xem trình duyệt có hỗ trợ gọi điện không
+            if ("contacts" in navigator && "ContactsManager" in window) {
+                // Sử dụng API Contacts để gọi điện
+                navigator.contacts.select(["phone"]).then(contacts => {
+                    // Gọi điện đến số điện thoại đã được chỉ định
+                    contacts.forEach(contact => {
+                        contact.phoneNumbers.forEach(phone => {
+                            if (phone.value === phoneNumber) {
+                                contact.pick();
+                            }
+                        });
+                    });
+                });
+            } else {
+                // Mở giao diện gọi điện của trình duyệt
+                window.location.href = "tel:" + phoneNumber;
+            }
+        }
 
 
     </script>

@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 
 const chitietspSchema = new mongoose.Schema({
-content:{type:String},
-price: {type:String},
-idsp:{type: mongoose.Schema.Types.ObjectId, ref: 'tensp'}
+    image:{type:String},
+    name:{type:String},
+    content: { type: String },
+    price: { type: String },
+    loaisp: { type: String },
+    mausac: [{
+        image: { type: String },
+        color: { type: String }
+    }],
+    idloaisp: { type: mongoose.Schema.Types.ObjectId, ref: 'loaisp' }
 });
 
 const ChitietSp = mongoose.model('chitietsp', chitietspSchema);
