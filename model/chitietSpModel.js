@@ -8,7 +8,8 @@ const chitietspSchema = new mongoose.Schema({
     loaisp: { type: String },
     mausac: [{
         image: { type: String },
-        color: { type: String }
+        color: { type: String },
+        price:{type:String}
     }],
     idloaisp: { type: mongoose.Schema.Types.ObjectId, ref: 'loaisp' }
 });

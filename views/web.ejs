@@ -20,6 +20,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+    @media only screen and (max-width: 400px) {
+    }
+    @media only screen and (min-width: 900px) {
         .navbar {
             width: 100%;
             position: fixed;
@@ -461,6 +464,7 @@
             bottom: 40px;
             /* Hiển thị nút khi hover */
         }
+    }
     </style>
 </head>
 
@@ -605,7 +609,7 @@
                                                 </form>
                                                 <button
                                                     style="background-color: #fa0e0e; width: 120px; height: 50px; color: #fffbfb; border: none;"
-                                                    class="col">MUA NGAY</button>
+                                                    class="col" onclick="makeCall()">MUA NGAY</button>
                                             </div>
                                         </div>
                                         <% }) %>
