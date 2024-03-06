@@ -22,7 +22,7 @@ router.post('/postloaisp', async (req, res) => {
 
 router.get('/getallsp', async (req, res) => {
     try {
-        const allsp = await TenSP.find().populate('chitietsp'); //populate lấy chi tiết
+        const allsp = await LoaiSP.find().populate('chitietsp'); //populate lấy chi tiết
         const tenspjson = await Promise.all(allsp.map(async (tensp) => {
             const chitietspJson = await Promise.all(tensp.chitietsp.map(async (chitietsp) => {
                 return {
@@ -55,7 +55,7 @@ router.post('/deletesp/:id', async (req, res) => {
         await Promise.all(xam.chitietsp.map(async (chitietsp) => {
             await ChitietSp.findByIdAndDelete(chitietsp._id);
         }));
-        await TenSP.deleteOne({_id:id});
+        await TenSP.deleteOne({ _id: id });
         res.json({ message: "Sản phẩm đã được xóa thành công." });
     } catch (error) {
         console.error(error);
@@ -63,18 +63,18 @@ router.post('/deletesp/:id', async (req, res) => {
     }
 })
 
-router.post('/postchitietsp/:id',upload.single('image'), async (req, res) => {
+router.post('/postchitietsp/:id', upload.single('image'), async (req, res) => {
     try {
         const id = req.params.id;
-        const { name,content, price } = req.body;
+        const { name, content, price } = req.body;
         const image = req.file.buffer.toString('base64');
-        const chitietsp = new ChitietSp({image,name,content,price });
+        const chitietsp = new ChitietSp({ image, name, content, price });
         const tensp = await LoaiSP.findById(id);
         if (!tensp) {
             res.status(403).json({ message: 'khong tim thay tensp' })
         }
-        chitietsp.idloaisp=id;
-        chitietsp.loaisp=tensp.name;
+        chitietsp.idloaisp = id;
+        chitietsp.loaisp = tensp.name;
         tensp.chitietsp.push(chitietsp._id);
         await chitietsp.save();
         await tensp.save();
@@ -92,20 +92,29 @@ router.get('/getchitietsp/:id', async (req, res) => {
         if (!chitietsp) {
             return res.status(404).json({ message: 'Không tìm thấy chi tiết sản phẩm' });
         }
+        const chitietspJson = chitietsp.mausac.map(async (chitiet) => {
+            return {
+                image: chitiet.image,
+                color: chitiet.color,
+                price: chitiet.price
+            }
+        })
+        res.render('chitietsp', chitietspJson)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: `Đã xảy ra lỗi: ${error}` });
+    }
+})
 
-        const tensp = await LoaiSP.findOne({ chitietsp: chitietsp._id });
-        if (!tensp) {
-            return res.status(404).json({ message: 'Không tìm thấy sản phẩm' });
-        }
-
-        const chitietspJson = {
-            id: chitietsp._id,
-            name: tensp.name,
-            noidung: chitietsp.content,
-            price: chitietsp.price
-        };
-
-        res.render('chitietsp',chitietspJson)
+router.post('/postmausac/:chitietspid', upload.single('image'), async (req, res) => {
+    try {
+        const chitietspid = req.params.chitietspid;
+        const { color, price } = req.body;
+        const chitietsp = await ChitietSp.findById(chitietspid);
+        const image = req.file.buffer.toString('base64');
+        chitietsp.mausac.push({ color, price, image });
+        await chitietsp.save();
+        res.status(200).json({ message: 'thêm màu thành công' })
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: `Đã xảy ra lỗi: ${error}` });
@@ -119,8 +128,11 @@ router.delete('/deletechitietsp/:id', async (req, res) => {
         if (!chitietsp) {
             return res.status(404).json({ message: 'Không tìm thấy chi tiết sản phẩm' });
         }
+        const loaisp = await LoaiSP.findById(chitietsp.idloaisp);
+        loaisp.chitietsp = loaisp.chitietsp.filter(chitiet => chitiet.toString() !== id);
+        await loaisp.save();
 
-        await ChitietSp.deleteOne({ _id: id }); 
+        await ChitietSp.deleteOne({ _id: id });
 
         res.json({ message: 'Xóa chi tiết sản phẩm thành công' });
     } catch (error) {
