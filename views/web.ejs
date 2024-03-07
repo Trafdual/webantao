@@ -187,6 +187,7 @@
                 margin-top: 10%;
 
             }
+
             .imgsuachua {
                 width: 40%;
                 height: 40%;
@@ -195,6 +196,7 @@
                 left: 30%;
                 z-index: 0;
             }
+
             .divsuachua {
                 text-align: center;
                 margin-left: 0.01%;
@@ -210,6 +212,7 @@
                 text-align: center;
                 font-size: 17px
             }
+
             .c {
 
                 position: relative;
@@ -231,6 +234,7 @@
                 border-radius: 10px;
                 margin-left: 8%;
             }
+
             .cott {
                 width: auto;
                 margin-top: 20px;
@@ -249,6 +253,7 @@
                 border-radius: 10px;
                 margin-left: 2%;
             }
+
             .tieude {
                 color: #fa0e0e;
                 font-size: 20px;
@@ -258,12 +263,14 @@
                 border: rgb(252, 20, 20) solid 1px;
                 border-radius: 20px;
             }
+
             .aphukien {
                 text-decoration: none;
                 font-weight: bold;
                 color: #050505;
             }
-            .tieudeto{
+
+            .tieudeto {
                 margin-left: 5%;
             }
         }
@@ -1102,6 +1109,11 @@
 
         });
         var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto', // Hiển thị số lượng sản phẩm phù hợp với kích thước của slide container
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
