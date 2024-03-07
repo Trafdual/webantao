@@ -3,7 +3,8 @@
 
 <head>
     <title>Web Mobile</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -456,6 +457,7 @@
             }
 
             #buttonmua {
+                right: 3%;
                 width: auto;
                 display: none;
                 position: relative;
@@ -468,6 +470,9 @@
             #listspchung:hover #buttonmua {
                 opacity: 1;
                 /* Hiển thị nút khi hover */
+            }
+            .section{
+                overflow: hidden;
             }
         }
     </style>
@@ -581,14 +586,14 @@
                 </div>
                 <div id="mobile-products" class="product-store position-relative no-padding-top section">
                     <div class="container sp">
-                        <div class="row">
-                            <div class="swiper product-swiper">
-                                <div class="swiper-wrapper list">
+                        <div>
+                            <div class="swiper-container">
+                                <div  class="swiper-wrapper">
                                     <% listSP.forEach((row, index)=> { %>
-                                        <div style="padding: 10px;" id="listspchung">
+                                        <div style="max-width: 300px;" class="swiper-slide" style="padding: 10px;" id="listspchung">
                                             <img src="data:image/jpeg;base64, <%= row.image %>" class="anh" alt="">
-                                            <div class="row">
-                                                <div class="col">
+                                            <div style="max-width: 300px;" class="row">
+                                                <div  class="col">
                                                     <h5 class="name">
                                                         <%= row.name %>
                                                     </h5>
@@ -599,7 +604,7 @@
                                                     </h5>
                                                 </div>
                                             </div>
-                                            <div id="buttonmua" style="padding: 10px;"
+                                            <div id="buttonmua" style="padding: 22px; max-width: 300px; overflow: hidden;"
                                                 class="row d-flex justify-content-between">
                                                 <form class="col" action="/getchitietsp/<%= row._id %>" method="get">
                                                     <button
@@ -613,6 +618,7 @@
                                         </div>
                                         <% }) %>
                                 </div>
+                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
                     </div>
@@ -823,6 +829,12 @@
                 });
             });
 
+        });
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
 
         function makeCall() {
